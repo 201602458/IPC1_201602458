@@ -3,8 +3,10 @@ package aeropuerto;
 public class jfCentral extends javax.swing.JFrame {
 
     Avion a = new Avion();
+    Estacion  e = new Estacion();
+    Pasajero p = new Pasajero();
     //Doble d = new Doble();
-    
+    int t=0;
     public jfCentral() {
         initComponents();
     }
@@ -92,8 +94,8 @@ public class jfCentral extends javax.swing.JFrame {
                             .addComponent(noestaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(51, 51, 51)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
+                            .addComponent(jButton2)
+                            .addComponent(jButton1))
                         .addGap(28, 28, 28)
                         .addComponent(jButton3)
                         .addGap(0, 429, Short.MAX_VALUE))))
@@ -113,12 +115,29 @@ public class jfCentral extends javax.swing.JFrame {
         //area.append(noestaciones.getText()+"  ESTACIONES"+"\n");
         area.append("***********************************************************************************"+"\n");
         
+        a.setAvion(Integer.valueOf(noaviones.getText()));
+        e.setNoestacion(Integer.valueOf(noestaciones.getText()));
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // siguiente turno
-        a.crear();
-        //d.texto();
+        // siguiente turno 
+      a.crear();
+      p.crear();
+//            if(a.area.equals("")){
+//             area.append("------Se an terminado los aviones-----"+"\n");
+//            }else{
+            t++;
+            area.append("------Turno: "+t+" -----"+"\n");
+            area.append("+++AVIONES+++"+"\n");
+            area.append(a.area);
+            area.append("\n"+"+++PASAJEROS+++"+"\n");
+            area.append(p.area);
+            area.append("\n");
+            area.append("\n");
+             
+            //}
+       
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

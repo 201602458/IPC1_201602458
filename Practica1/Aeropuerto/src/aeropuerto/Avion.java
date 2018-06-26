@@ -5,18 +5,21 @@ import javax.swing.JOptionPane;
 
 public class Avion {
 
-    private int noavion;
+    static int noavion;
     private int pasajeros;
     private int turnos;
     private int tipo;
-    private int contador;
+    static int contador;
     private int turnomant;
-    
+    private int clic;
+    String area="";
     private Avion anterior;
     private Avion siguiente;
     
     Random r = new Random();
     Doble d = new Doble();
+    Pasajero p = new Pasajero();
+   // Cola c = new Cola();
 
     //*****************************************************
     public Avion(){}
@@ -40,6 +43,15 @@ public class Avion {
         this.noavion = avion;
     }
 
+    public int getClic() {
+        //clic++;
+        return clic;
+    }
+
+    public void darClic() {
+        clic=clic+1;
+    }
+
 
     public int getTurnos() {
         return turnos;
@@ -52,13 +64,25 @@ public class Avion {
     public int getPasajeros() {
         return pasajeros;
     }
+
+    public int getTurnomant() {
+        return turnomant;
+    }
+
+    public int getContador() {
+        return contador;
+    }
+
+    
     
     //*****************************************************
     public void crear(){
         
+       
         contador++;
         if(contador<=noavion){        
             tipo=r.nextInt(3)+1;
+            
             if(tipo==1){
                 pasajeros=r.nextInt(10-5+1)+5;
                 turnos=1;
@@ -74,11 +98,16 @@ public class Avion {
                 turnos=3;
                 turnomant=r.nextInt(6-3+1)+3;
             }
+             d.insertarFin(contador, pasajeros, turnos, tipo, turnomant);
+              p.setNopasajero(pasajeros);
+            //JOptionPane.showMessageDialog(null,pasajeros);
+           
+           d.mostrarAdelante(); 
         }
-        else{JOptionPane.showMessageDialog(null,"final");}
-        JOptionPane.showMessageDialog(null,noavion+"-"+contador+"-"+tipo+"-"+pasajeros+"-"+turnos+"-"+turnomant);
-        d.insertarFin(noavion, pasajeros, turnos, tipo, turnomant);
-        d.mostrarAdelante();
+        else{JOptionPane.showMessageDialog(null,"fin");}
+        //JOptionPane.showMessageDialog(null,contador+"-"+contador+"-"+tipo+"-"+pasajeros+"-"+turnos+"-"+turnomant);
+        //d.mostrarAdelante(); 
+        area=d.regresotexto();;
     }
 
     
